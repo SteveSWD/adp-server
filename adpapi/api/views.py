@@ -14,9 +14,13 @@ def tasks(request):
     return JsonResponse(tasks_list, safe=False)"""
     json_list = json.dumps([tsk.__dict__ for tsk in Tasks])
     return JsonResponse(json_list, safe=False)
-def update(request, task_id):
-    Tasks[task_id-1].completed = True
-    return HttpResponse("task completed good job you did good")
+def update(request):
+    print(update)
+    body_unicode = request.body.decode('utf-8')
+    res = json.loads(body_unicode)
+    num = int(res)
+    Tasks[num].completed = True
+    return HttpResponse("Task completed")
 
 def new(request):
     body_unicode = request.body.decode('utf-8')
