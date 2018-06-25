@@ -24,8 +24,8 @@ def new(request):
     i = 1
     for e in Tasks:
         i += 1
-    new_task = Tasks.append(Task(res["task_text"],i, False))
-    return HttpResponse(res["task_text"])
+    new_task = Tasks.append(Task(res,i, False))
+    return HttpResponse("Created")
 
     
 # Create your views here.
